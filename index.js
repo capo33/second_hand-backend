@@ -1,5 +1,4 @@
 import dotenv from "dotenv";
-import express from "express";
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 
@@ -14,8 +13,6 @@ import {
   Mutation,
 } from "./Graphql/Resolvers/Index.js";
 
-const app = express();
-
 const server = new ApolloServer({
   typeDefs,
   resolvers: {
@@ -27,14 +24,6 @@ const server = new ApolloServer({
 });
 
 // Middleware
-
-if (process.env.NODE_ENV === "production") {
-  const __dirname = path.resolve();
-  app.use(express.static(path.join(__dirname, "/frontend/build")));
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
-  );
-}
 
 const { url } = await startStandaloneServer(server, {
   listen: { port: process.env.PORT || 4000 },
