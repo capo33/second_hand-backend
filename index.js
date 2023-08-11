@@ -4,14 +4,14 @@ import { startStandaloneServer } from "@apollo/server/standalone";
 
 dotenv.config();
 
-import typeDefs from "./Graphql/Schema/schema.js";
-import { mainCards, products, categories } from "./data/index.js";
 import {
   Product,
   Category,
   Query,
   Mutation,
 } from "./Graphql/Resolvers/Index.js";
+import typeDefs from "./Graphql/Schema/schema.js";
+import { mainCards, products, categories } from "./data/index.js";
 
 const server = new ApolloServer({
   typeDefs,

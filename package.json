@@ -6,7 +6,7 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "start": "node index",
+    "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "dependencies": {
